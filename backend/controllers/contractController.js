@@ -30,6 +30,15 @@ export const createContract = async (req, res) => {
                 success: false,
             });
         }
+
+        // Check if the demand is closed
+        if (demand.status === 'Closed') {
+            return res.status(400).json({
+                message: "Cannot create contract. The demand is already closed.",
+                success: false,
+            });
+        }
+
         const buyer=await Buyer.findById(demand.buyerId);
         const finalPrice= finalPricePerUnit* finalQuantity;
         // Create a new contract
@@ -66,6 +75,45 @@ export const createContract = async (req, res) => {
             //     farmerName: user.username,
             //     buyerName: buyer.username
             // },
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: "Server error",
+            success: false,
+        });
+    }
+};
+
+
+export const getContractDetails = async (req, res) => {
+    try {
+        const contractId = req.params.id;
+
+        // Find the contract by ID and populate the necessary fields
+        const contract = await Contract.findById(contractId)
+            .populate({ path: 'buyerId', select: 'username' })
+            .populate({ path: 'farmerId', select: 'username' });
+
+        if (!contract) {
+            return res.status(404).json({
+                message: "Contract not found",
+                success: false,
+            });
+        }
+
+        // Extract the buyerName and farmerName from the populated contract
+        const buyerName = contract.buyerId.username;
+        const farmerName = contract.farmerId.username;
+
+        return res.status(200).json({
+            message: "Contract details fetched successfully",
+            success: true,
+            contract: {
+                ...contract.toObject(), // Convert the contract to a plain object
+                buyerName, // Add buyerName to the response
+                farmerName, // Add farmerName to the response
+            },
         });
     } catch (error) {
         console.error(error);

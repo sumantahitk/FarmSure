@@ -395,3 +395,68 @@ export const updateProfilePicture = async (req, res) => {
             });
         }
     };
+
+  
+
+// Controller to get all user info based on logged-in user type
+export const getUserInfo = async (req, res) => {
+    try {
+        const userId = req.id; // Extract user ID from authentication middleware
+
+        if (!userId) {
+            return res.status(401).json({
+                message: "User ID is required",
+                success: false,
+            });
+        }
+
+        // Find the user by userId in the User model
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+                success: false,
+            });
+        }
+
+        let userInfo;
+
+        // Fetch full user details based on the userType
+        if (user.userType === "farmer") {
+            userInfo = await Farmer.findById(userId)
+                .populate('addressId')  // Populate address details
+                .populate('contractId') // Populate contract details if any
+                .exec();
+        } else if (user.userType === "buyer") {
+            userInfo = await Buyer.findById(userId)
+                .populate('addressId')   // Populate address details
+                .populate('contractId')  // Populate contract details if any
+                .populate('demands')     // Populate demand details if any
+                .exec();
+        } else {
+            return res.status(400).json({
+                message: "Invalid user type",
+                success: false,
+            });
+        }
+
+        if (!userInfo) {
+            return res.status(404).json({
+                message: "User information not found",
+                success: false,
+            });
+        }
+
+        return res.status(200).json({
+            message: "User information retrieved successfully",
+            success: true,
+            userInfo,
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: "Server error",
+            success: false,
+        });
+    }
+};

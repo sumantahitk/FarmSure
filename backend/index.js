@@ -8,6 +8,7 @@ import userRoute from "./routes/user_routes.js"
 import demandRoute from "./routes/demand_routes.js"
 import searchRoute from './routes/search_routes.js';
 import contractRoute from "./routes/contract_routes.js";
+import notificationRoute from "./routes/notification_routes.js";
 import path from "path";
 
 
@@ -47,7 +48,7 @@ app.use("/user",userRoute);
 app.use("/demand",demandRoute);
 app.use("/search",searchRoute);
 app.use("/contract",contractRoute);
-
+app.use("/notification",notificationRoute);
 app.listen(PORT,()=>{
     connectDB();
     console.log(`server listen at port ${PORT}`);
