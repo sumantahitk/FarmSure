@@ -1,11 +1,7 @@
 # FarmSure
 FarmSure is a web platform designed to connect farmers and buyers in a streamlined way. The application allows buyers to post their crop demands, and farmers can search for these demands and negotiate a deal based on availability and pricing. The goal is to facilitate smooth transactions and efficient communication between the two parties.
 
-<<<<<<< HEAD
- Features:-
-=======
-
->>>>>>> 1c28221185d33f511ca0edf04a8e8e21f40c0215
+Features:-
 Demand Posting: Buyers can create crop demands based on their specific requirements (crop type, quantity, price, etc.).
 Farmer Search: Farmers can search for posted demands to find the best match for the crops they are offering.
 Secure Deals: Once a match is found, farmers and buyers can finalize contracts through the platform.
