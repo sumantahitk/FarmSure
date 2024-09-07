@@ -1,4 +1,4 @@
-# FarmSure
+# FarmSure:-
 FarmSure is a web platform designed to connect farmers and buyers in a streamlined way. The application allows buyers to post their crop demands, and farmers can search for these demands and negotiate a deal based on availability and pricing. The goal is to facilitate smooth transactions and efficient communication between the two parties.
 
 # Features:-  
@@ -23,7 +23,7 @@ git clone https://github.com/sumantahitk/FarmSure.git
 cd FarmSure
 ```
 
-# Install dependencies for both frontend and backend:
+# Install dependencies for both frontend and backend:-
 ```bash
 cd backend
 npm install
@@ -34,7 +34,7 @@ npm install
 Backend: Create a .env file with your MongoDB URI, Cloudinary credentials, and JWT secret.  
 Frontend: Adjust any API endpoint URLs as necessary.  
 
-# Run the application:
+# Run the application:-
 1. Backend  
 ```bash
 cd backend
