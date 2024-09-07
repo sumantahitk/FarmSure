@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre+ExtraBold:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+@font-face {
+  font-family: "Font Awesome 5 Pro";
+  src: url("/public/Font Awesome 5 Pro Regular.ttf");
+  font-weight: 400;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  @apply leading-[normal] m-0;
+}
+/* index.css or App.css */
+html {
+  scroll-behavior: smooth;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  list-style: none;
+}
+
+.pagination__link {
+  padding: 8px 12px;
+  margin: 0 5px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination__link--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination__link--active {
+  background-color: #4CAF50;
+  /* Green background for the active page */
+  color: white;
+}
+*,
+::before,
+::after {
+  border-width: 0;
+}
