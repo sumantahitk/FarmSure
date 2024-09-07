@@ -9,10 +9,16 @@ const ContractForm = memo(({ className = "" }) => {
   const [pricePerUnit, setPricePerUnit] = useState("");
   const [deliveryDate, setDeliveryDate] = useState("");
   const [description, setDescription] = useState("");
+<<<<<<< HEAD
   const [image, setImage] = useState(null); // State for image file
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+=======
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (event) => {
@@ -24,6 +30,7 @@ const ContractForm = memo(({ className = "" }) => {
       return;
     }
 
+<<<<<<< HEAD
     // Proceed with form submission
     handleFormSubmit();
   };
@@ -51,6 +58,26 @@ const ContractForm = memo(({ className = "" }) => {
             "Content-Type": "multipart/form-data",
           },
           withCredentials: true,
+=======
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8800/demand/createnew",
+        {
+          cropName,
+          quantity,
+          pricePerUnit,
+          deliveryDate,
+          description
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          withCredentials: true
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
         }
       );
 
@@ -62,11 +89,16 @@ const ContractForm = memo(({ className = "" }) => {
     } catch (err) {
       // Handle error response
       if (err.response) {
+<<<<<<< HEAD
         console.error("Error response:", err.response.data);
         setError(
           err.response.data.message ||
             "Failed to create contract. Please try again."
         );
+=======
+        console.error('Error response:', err.response.data);
+        setError(err.response.data.message || 'Failed to create contract. Please try again.');
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
       } else if (err.request) {
         setError("No response received from server.");
       } else {
@@ -99,7 +131,10 @@ const ContractForm = memo(({ className = "" }) => {
             type="text"
             value={cropName}
             onChange={(e) => setCropName(e.target.value)}
+<<<<<<< HEAD
             disabled={loading} // Disable input during loading
+=======
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
           />
         </div>
 
@@ -110,7 +145,10 @@ const ContractForm = memo(({ className = "" }) => {
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
+<<<<<<< HEAD
             disabled={loading} // Disable input during loading
+=======
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
           />
         </div>
 
@@ -122,6 +160,7 @@ const ContractForm = memo(({ className = "" }) => {
               type="number"
               value={pricePerUnit}
               onChange={(e) => setPricePerUnit(e.target.value)}
+<<<<<<< HEAD
               disabled={loading} // Disable input during loading
             />
           </div>
@@ -130,6 +169,11 @@ const ContractForm = memo(({ className = "" }) => {
             type="button"
             disabled={loading} // Disable button during loading
           >
+=======
+            />
+          </div>
+          <button className="w-20 bg-primary rounded-xl h-10 flex items-center justify-center ml-2 cursor-pointer">
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
             <div className="text-sm font-medium text-white">Ask AI</div>
           </button>
         </div>
@@ -141,6 +185,7 @@ const ContractForm = memo(({ className = "" }) => {
             type="date"
             value={deliveryDate}
             onChange={(e) => setDeliveryDate(e.target.value)}
+<<<<<<< HEAD
             disabled={loading} // Disable input during loading
           />
         </div>
@@ -153,6 +198,8 @@ const ContractForm = memo(({ className = "" }) => {
             accept="image/*"
             onChange={(e) => setImage(e.target.files[0])} // Set image file
             disabled={loading} // Disable input during loading
+=======
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
           />
         </div>
 
@@ -163,14 +210,21 @@ const ContractForm = memo(({ className = "" }) => {
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+<<<<<<< HEAD
             disabled={loading} // Disable input during loading
+=======
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
           />
         </div>
 
         <button
           type="submit"
           className="w-2/5 bg-primary rounded-xl h-10 flex items-center justify-center mb-6 cursor-pointer"
+<<<<<<< HEAD
           disabled={loading} // Disable button during loading
+=======
+          disabled={loading}
+>>>>>>> 820ced786928888f2c8abd56ea4bab4e835cad61
         >
           <div className="text-sm font-medium text-white">
             {loading ? "Creating Contract..." : "Create Contract"}
