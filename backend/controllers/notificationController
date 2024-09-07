@@ -11,9 +11,9 @@ export const createNotificationForSignedDeal = async (req, res) => {
     try {
         const { demandId, contractId } = req.params;
         const farmerId = req.id;
-        console.log("farmer id :v ",farmerId)
-
-        // Fetch the demand to get the buyer ID
+        // console.log("farmer id :v ",farmerId)
+        // console.log(farmerId);
+        // Fetch the demand to get the buyerId
         const demand = await Demand.findById(demandId);
         const contract = await Contract.findById(contractId);
 
