@@ -41,7 +41,7 @@ export const addNewDemand = async (req, res) => {
             status
         });
         // console.log(product._id);
-        console.log(demand.expectedDate);
+        // console.log(demand.expectedDate);
 
         const buyer = await Buyer.findById(buyer_id).populate("demands");
 //        
@@ -137,9 +137,9 @@ console.log(demands);
 
 export const getBuyerDemand = async (req, res) => {
     try {
-        const buyerId = req.id; // Assuming the farmer's ID is obtained from middleware (e.g., isAuthenticated)
+        const buyerId = req.id; // Assuming the Buyer's ID is obtained from middleware (e.g., isAuthenticated)
 
-        // Find the farmer by ID
+        // Find the Buyer by ID
         const buyer = await Buyer.findById(buyerId).populate('demands');
 
         if (!buyer) {
@@ -149,7 +149,7 @@ export const getBuyerDemand = async (req, res) => {
             });
         }
 
-        // Get all products associated with the farmer
+        // Get all products associated with the Buyer
         const demands = await Demand.find({ buyerId: buyerId });
 
         return res.status(200).json({

@@ -19,7 +19,7 @@ export const register = async (req, res) => {
                 
             });
         }
-console.log("hi");
+// console.log("hi");
         // Validate companyName if userType is buyer
         if (userType === "buyer" && !companyName) {
             return res.status(401).json({

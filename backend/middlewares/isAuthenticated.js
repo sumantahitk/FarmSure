@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const isAuthenticated=async (req,res,next)=>{
+export const isAuthenticated=async (req,res,next)=>{
     try{
         const token = req.cookies.token;
 
@@ -27,4 +27,18 @@ const isAuthenticated=async (req,res,next)=>{
     }
 }
 
-export default isAuthenticated;
+export const isBuyer = async (req, res, next) => {
+  const user = await User.findById(req.id);
+  if (user.userType !== "buyer") {
+    return res.status(403).json({ message: "Access denied: Only buyers allowed" });
+  }
+  next();
+};
+
+export const isFarmer = async (req, res, next) => {
+  const user = await User.findById(req.id);
+  if (user.userType !== "farmer") {
+    return res.status(403).json({ message: "Access denied: Only farmers allowed" });
+  }
+  next();
+};
